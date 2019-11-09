@@ -34,25 +34,20 @@ def show(inventory: list):
         print(f"{index} {item}")
         index +=1
 
-# show(inventory)
-# print(inventory)
-# def execCommand(select, inventoryList: list):
-#     selection = {
-#         "walk":walk,
-#         "show":show,
-#         "edit":edit,
-#         "drop":drop
-#     }
-
-#     function = selection.get(select)
-
-#     if function != None:
-#         function(inventoryList)
-
-
 def main():
     menu()
-    walk()
-
-# ​if __name__ == "__main__":
-main()
+    while True:
+        command = input('Command: ')
+        if command == 'walk':
+            walk()
+        elif command == 'show':
+            print('show')
+        elif command == 'drop':
+            print('drop')
+        elif command == 'exit':
+            break
+        else:
+            print('Not a valid command. Please Try again!')
+            
+if __name__ == '__main__':
+    main()
