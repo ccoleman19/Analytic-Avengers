@@ -1,5 +1,5 @@
 import random
-fileName = r'WizardStuff\wizard_all_items.txt'
+fileName = r'wizard_all_items.txt'
 
 def menu():
     print("The Wizard Inventory progran\n\n")
@@ -22,10 +22,11 @@ def openFile(fileName):
 items = openFile(fileName)
 
 def editItems(inventory):
-    with open('WizardStuff\wizardInventory.txt','w',newline="") as file:
+    with open('wizardInventory.txt','w',newline="") as file:
         for item in inventory:
                 file.write(item + "\n")
 
+# The walk function will select one random item from the given wizard_all_items.txt file
 def walk(inventory):
     randomItem = random.choice(items)
     print(f"While walking down a path, you see {randomItem}.")
@@ -33,6 +34,8 @@ def walk(inventory):
     if grabItem == 'y':
         grab(randomItem, inventory)
 
+# The grab function will take the random item found from the walk function, add it 
+# to the invetory list, and write it to the wizardInventory.txt file
 def grab(randomItem, inventory):
     maxLimit = 4
     if len(inventory) < maxLimit:
@@ -42,6 +45,8 @@ def grab(randomItem, inventory):
         print("You can't carry any more items. Drop something first.")
     return inventory
 
+# The drop function will ask for an item number from invedntory list, remove it 
+# from the invetory list, and remove it from the wizardInventory.txt file
 def drop(inventory):
     try:
         index = int(input("number: "))
@@ -54,6 +59,7 @@ def drop(inventory):
     except ValueError:
         print('Invalid item number')
 
+# The show function will show the contents of the invetory list up to a max of 4 items
 def show(inventory):
     if len(inventory) != 0:
         index = 1
@@ -63,6 +69,7 @@ def show(inventory):
     else:
         print('You have no items')
 
+# The main 
 def main():
     inventory = []
     menu()
