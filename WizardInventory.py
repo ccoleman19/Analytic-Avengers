@@ -39,7 +39,7 @@ def drop(inventory: list):
     if index <= len(inventory):
         index = index - 1
         inventory.remove(inventory[index])
-​
+        
 # note: funtion names can be used as value in phthon dictionary strucure - aha! How cool!
 # Dictionary can be used as substitue for switch/case - to avoid many else, elif statements
 def executeCommand(argument, inventoryList: list):

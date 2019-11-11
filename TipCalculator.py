@@ -1,7 +1,8 @@
 def getCost():
     while True:
         try:
-            cost = round(float(input('Cost of meal: ')),2)
+            cost = float(input('Cost of meal: '))
+            cost = round(cost,2)
             if cost < 0:
                 print('Must be greater than 0. Please try again')
             else:

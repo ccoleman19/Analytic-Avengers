@@ -1,6 +1,8 @@
 import random
-fileName = r'wizard_all_items.txt'
+# adding the file name
+fileName = r'wizard_all_items1.txt'
 
+# Prints the menu
 def menu():
     print("The Wizard Inventory progran\n\n")
     print("COMMAND MENU")
@@ -8,7 +10,8 @@ def menu():
     print("show - Show all items")
     print("drop - Drop an item")
     print("exit - Exit program")
-
+    
+#This function opens the file if it exits.
 def openFile(fileName):
     try:
         with open(fileName, 'r') as inFile:
@@ -16,18 +19,18 @@ def openFile(fileName):
             return wizardItems
     except FileNotFoundError:
         print("Could not find the items file.\nExiting program.  Bye!")
+        return FileNotFoundError
     except Exception as e:
         print(type(e),e)
 
-items = openFile(fileName)
-
+# This function will write and edit the new inventory file.
 def editItems(inventory):
     with open('wizardInventory.txt','w',newline="") as file:
         for item in inventory:
                 file.write(item + "\n")
 
 # The walk function will select one random item from the given wizard_all_items.txt file
-def walk(inventory):
+def walk(items, inventory):
     randomItem = random.choice(items)
     print(f"While walking down a path, you see {randomItem}.")
     grabItem = input('Do you want to grab it? (y/n): ').lower()
@@ -69,14 +72,15 @@ def show(inventory):
     else:
         print('You have no items')
 
-# The main 
+# The main function will ask the user for input commands and keep track of the inventory list
 def main():
     inventory = []
+    items = openFile(fileName)
     menu()
     while True:
         command = input('Command: ')
         if command == 'walk':
-            walk(inventory)
+            walk(items, inventory)
         elif command == 'show':
             show(inventory)
         elif command == 'drop':
