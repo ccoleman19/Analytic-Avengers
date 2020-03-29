@@ -19,7 +19,7 @@ def openFile(fileName):
             return wizardItems
     except FileNotFoundError:
         print("Could not find the items file.\nExiting program.  Bye!")
-        return FileNotFoundError
+        return FileNotFoundError2
     except Exception as e:
         print(type(e),e)
 
