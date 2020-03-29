@@ -28,6 +28,9 @@ def firstVowel(word):
         pass
 
 
+def logging():
+    pass
+
 def wordList(text):
     removePunctuation = str.maketrans("", "", string.punctuation)
     text = text.translate(removePunctuation)
